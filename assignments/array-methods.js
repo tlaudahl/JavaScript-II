@@ -84,6 +84,7 @@ console.log(ticketPriceTotal);
 // Problem 1
 let vip = runners.filter(e => e.donation > 200);
 console.table(vip);
+console.log(vip);
 // Problem 2
 let edu = runners.filter(e => e.email.includes('.edu'));
 console.table(edu);
