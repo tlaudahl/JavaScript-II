@@ -58,28 +58,52 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach(e => fullNames.push(`First: ${e.first_name} Last: ${e.last_name}`))
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+runners.map(e => firstNamesAllCaps.push(e.first_name.toUpperCase()));
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
-let runnersLargeSizeShirt = [];
+let runnersLargeSizeShirt = runners.filter(e => e.shirt_size === 'L');
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
 let ticketPriceTotal = 0;
+ticketPriceTotal = runners.reduce((acc, e) => acc + e.donation, 0);
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
-
+let vip = runners.filter(e => e.donation > 200);
+console.table(vip);
 // Problem 2
-
+let edu = runners.filter(e => e.email.includes('.edu'));
+console.table(edu);
 // Problem 3
+let shirtSizes = [{'XS': 0, 'S': 0, 'M': 0, 'L': 0, 'XL': 0, '2XL': 0, '3XL': 0}];
+runners.forEach(e => {
+  if (e.shirt_size === 'XS') {
+    shirtSizes[0].XS += 1;
+  } else if (e.shirt_size === 'S') {
+    shirtSizes[0].S += 1;
+  } else if (e.shirt_size === 'M') {
+    shirtSizes[0].M += 1;
+  } else if (e.shirt_size === 'L') {
+    shirtSizes[0].L += 1;
+  } else if (e.shirt_size === 'XL') {
+    shirtSizes[0].XL += 1;
+  } else if (e.shirt_size === '2XL') {
+    shirtSizes[0]['2XL'] += 1;
+  } else if (e.shirt_size === '3XL') {
+    shirtSizes[0]['3XL'] += 1;
+  }
+})
+console.table(shirtSizes);
