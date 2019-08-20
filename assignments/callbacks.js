@@ -91,4 +91,5 @@ function removeDuplicates(array, cb) {
   return cb(array);
 }
 
+// Console Log the newArr with no duplicates and the newArr without any changes to make sure it works
 console.log(removeDuplicates(newArr, arrSet), newArr);
